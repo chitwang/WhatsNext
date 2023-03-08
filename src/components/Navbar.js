@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">WhatsNext</Link>
+            <Link className={`nav-link ${location.pathname==="/events"? "active": ""}`} aria-current="page" to="/events">What'sNext</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -24,6 +24,12 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <Link className={`nav-link ${location.pathname==="/about"? "active": ""}`} to="/about">About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link ${location.pathname==="/myEvents"? "active": ""}`} to="/myEvents">Events</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link ${location.pathname==="/editEvent"? "active": ""}`} to="/editEvent">Edit Events</Link>
                         </li>
 
                     </ul>

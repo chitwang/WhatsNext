@@ -3,11 +3,11 @@ import { useState } from "react";
 
 const EventState = (props) => {
   const host = "http://localhost:5000"
-  // const eventsInitial = [];
-  const [events, setEvents] = useState([{id: "", etitle: "", edescription: "", etag: "", estartTime:Date.now, eendTime:Date.now, ereqsp:false,elike:0}]);
+  const eventsInitial = [];
+  const [events, setEvents] = useState(eventsInitial);
   // let events = [];
   console.log(Array.isArray(events));
-  // Get all events
+  // Get all Notes
   const getEvents = async () => {
     // API Call 
     const response = await fetch(`${host}/api/events/fetchallevents`, {
@@ -23,7 +23,7 @@ const EventState = (props) => {
   }
 
   // Add a Event
-  const addEvent = async (title, description, tag, startTime, endTime,reqsp) => {
+  const addEvent = async (title, description, tag) => {
     // TODO: API Call
     // API Call 
     const response = await fetch(`${host}/api/events/addevent`, {
@@ -32,22 +32,14 @@ const EventState = (props) => {
         'Content-Type': 'application/json',
         "auth-token":localStorage.getItem("token")
       },
-      body: JSON.stringify({title, description, tag, startTime, endTime,reqsp})
+      body: JSON.stringify({title, description, tag})
     });
 
-    const json = await response.json();
+    const event = await response.json();
     // const finalevents = events.concat(event);
-    if(!(json.success)){
-      var confirmed = window.confirm(`${json.warning} ${json.clash.map((cl) => cl.title)}`);
-      if(confirmed){
-        setEvents(events.concat(json.savedEvent));
-      }
-    }
-    // console.log(Array.isArray(events));
-    else{
-    setEvents(events.concat(json.savedEvent))
-    }
-    // events.push(event);
+    console.log(Array.isArray(events));
+    setEvents(events.concat(event))
+    events.push(event);
   }
 
   // Delete a Event
@@ -67,7 +59,7 @@ const EventState = (props) => {
   }
 
   // Edit a Event
-  const editEvent = async (id, title, description, tag, startTime, endTime) => {
+  const editEvent = async (id, title, description, tag) => {
     // API Call 
     const response = await fetch(`${host}/api/events/updateevent/${id}`, {
       method: 'PUT',
@@ -75,7 +67,7 @@ const EventState = (props) => {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('token')
       },
-      body: JSON.stringify({title, description, tag, startTime, endTime})
+      body: JSON.stringify({title, description, tag})
     });
     const json = await response.json(); 
 
@@ -87,9 +79,6 @@ const EventState = (props) => {
         newEvents[index].title = title;
         newEvents[index].description = description;
         newEvents[index].tag = tag; 
-        newEvents[index].startTime = startTime;
-        newEvents[index].endTime = endTime;
-        newEvents[index].like = element.like;
         break; 
       }
     }  
