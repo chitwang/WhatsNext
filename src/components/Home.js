@@ -67,14 +67,14 @@ const Home = ({ theme }) => {
             isspecial: false
         }
     ]);
-
+    const [specialevents, setspecialevents] = useState([]);
     const [open, setOpen] = useState(false);
     const [popupData, setPopupData] = useState({});
     const [gridkey, setGridkey] = useState(false);
     useEffect(() => {
         const autorun = async () => {
             const res = await fetch(
-                "http://localhost:5000/api/homepg/allevents",
+                "https://whatsnext-backend.onrender.com/api/homepg/allevents",
                 {
                     method: "GET",
                     headers: {
@@ -86,6 +86,19 @@ const Home = ({ theme }) => {
             setEvents(json.events);
             setSpecial(json.events);
             // console.log(json.len);
+
+            const resspecial = await fetch(
+                "https://whatsnext-backend.onrender.com/api/homepg/specialevents",
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            const jsonspecial = await resspecial.json();
+            setspecialevents(jsonspecial.events);
+            // setSpecial(json.events);
         };
         autorun();
     }, [gridkey]);
@@ -107,7 +120,7 @@ const Home = ({ theme }) => {
         useEffect(() => {
             const fetchData = async () => {
                 const res = await fetch(
-                    "http://localhost:5000/api/generaluser/checkforlikeevent",
+                    "https://whatsnext-backend.onrender.com/api/generaluser/checkforlikeevent",
                     {
                         method: "POST",
                         headers: {
@@ -126,7 +139,7 @@ const Home = ({ theme }) => {
         }, [eventID]);
 
         const handleLike = async () => {
-            await fetch("http://localhost:5000/api/generaluser/likeevent", {
+            await fetch("https://whatsnext-backend.onrender.com/api/generaluser/likeevent", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -225,7 +238,7 @@ const Home = ({ theme }) => {
 
     return (
         <div style={style} className="App">
-            <Carousel events={events} special={special} theme={theme}/>
+            <Carousel events={specialevents} special={specialevents} theme={theme}/>
             <div class="container">
                 {!localStorage.getItem("token") ? (
                     <div>

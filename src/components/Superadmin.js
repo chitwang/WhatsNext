@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Superadmin_eventitem from "./Superadmin_eventitem";
 
 const Superadmin = ({theme}) => {
-    const host = "http://localhost:5000";
+    const host = "https://whatsnext-backend.onrender.com";
     const [requ, setreq] = useState([]);
     const seereq = async () => {
         const response = await fetch(`${host}/api/superadmin/seerequests`, {

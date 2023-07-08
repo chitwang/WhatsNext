@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import moment from "moment";
 
 const Superadmin_eventitem = (props) => {
-    const host = "http://localhost:5000";
+    const host = "https://whatsnext-backend.onrender.com";
     const { event } = props;
     const [events, setEvents] = useState([
         {

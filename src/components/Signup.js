@@ -22,7 +22,7 @@ const Signup = ({theme}) => {
         e.preventDefault();
         const { name, email, password } = credentials;
         const response = await fetch(
-            "http://localhost:5000/api/auth/generateotp",
+            "https://whatsnext-backend.onrender.com/api/auth/generateotp",
             {
                 method: "POST",
                 headers: {
@@ -56,7 +56,7 @@ const Signup = ({theme}) => {
             // OTPs match, create user
             var notify = window.confirm("OTP Verified and account creaated Successfully!\nEnable email notifications about upcoming events?");
             const { name, email, password } = credentials;
-            fetch("http://localhost:5000/api/auth/createuser", {
+            fetch("https://whatsnext-backend.onrender.com/api/auth/createuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

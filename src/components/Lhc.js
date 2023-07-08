@@ -31,7 +31,7 @@ function Lhc({theme}) {
             return;
         }
 
-        const result = await axios.post("http://localhost:5000/api/payment/orders");
+        const result = await axios.post("https://whatsnext-backend.onrender.com/api/payment/orders");
 
         if (!result) {
             alert("Server error. Are you online?");

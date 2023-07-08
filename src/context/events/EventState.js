@@ -59,7 +59,7 @@ const EventState = (props) => {
   }
   
   // let history = useHistory();
-  const host = "http://localhost:5000"
+  const host = "https://whatsnext-backend.onrender.com"
   // const eventsInitial = [];
   const [events, setEvents] = useState([{id: "", etitle: "", edescription: "", etag: "", estartTime:Date.now, eendTime:Date.now, ereqsp:false,elike:0,eimage:""}]);
   // let events = [];

@@ -21,7 +21,7 @@ const Forget = ({theme}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const {email } = credentials;
-        const res = await fetch("http://localhost:5000/api/auth/getuserbyemail",
+        const res = await fetch("https://whatsnext-backend.onrender.com/api/auth/getuserbyemail",
         {
             method: "POST",
             headers: {
@@ -35,7 +35,7 @@ const Forget = ({theme}) => {
             return;
         }
         const response = await fetch(
-            "http://localhost:5000/api/auth/generateotpforrecovery",
+            "https://whatsnext-backend.onrender.com/api/auth/generateotpforrecovery",
             {
                 method: "POST",
                 headers: {
@@ -99,7 +99,7 @@ const Forget = ({theme}) => {
         // event.preventDefault();
         const {email, password} = credentials;
         console.log(password);
-        fetch("http://localhost:5000/api/auth/changepass", {
+        fetch("https://whatsnext-backend.onrender.com/api/auth/changepass", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const Dashboard = ({theme}) => {
     useEffect(() => {
         const getuser = async () => {
             const response = await fetch(
-                "http://localhost:5000/api/auth/getuser",
+                "https://whatsnext-backend.onrender.com/api/auth/getuser",
                 {
                     method: "POST",
                     headers: {
@@ -24,7 +24,7 @@ const Dashboard = ({theme}) => {
             setUser(loggedinuser);
 
             const res = await fetch(
-                "http://localhost:5000/api/generaluser/showlikedevents",
+                "https://whatsnext-backend.onrender.com/api/generaluser/showlikedevents",
                 {
                     headers: {
                         "Content-Type": "application/json",

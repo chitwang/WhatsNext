@@ -7,7 +7,10 @@ connectToMongo();
 const app = express()
 const port = 5000
 
-app.use(cors())
+const coroptions = {
+  origin:"https://whats-next-dbas.onrender.com"
+}
+app.use(cors(coroptions))
 app.use(express.json())
 
 // Available Routes
