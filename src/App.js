@@ -69,7 +69,7 @@ function App() {
             <Route exact path="/signup">
               <Signup theme={theme} />
             </Route>
-            <Route exact path={process.env.REACT_APP_SUPERADMIN_URL}>
+            <Route exact path="/superadmin5667">
               <Superadmin theme={theme} />
             </Route>
           </Switch>
