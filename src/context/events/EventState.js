@@ -131,7 +131,7 @@ const EventState = (props) => {
               </tr>
             </thead>
             <tbody>
-              ${json.clash.map((cl) => `
+              ${json.clash?.map((cl) => `
                 <tr>
                   <td>${cl.title}</td>
                   <td>${cl.organiser}</td>
